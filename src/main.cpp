@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-int	main(int ac, char *av[])
+int	main()
 {
   sf::Window App(sf::VideoMode(800, 600), "Raytracer");
 
