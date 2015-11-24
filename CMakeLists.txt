@@ -14,5 +14,5 @@ if(SFML_FOUND)
 	target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 endif()
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -std=c++11")
 
