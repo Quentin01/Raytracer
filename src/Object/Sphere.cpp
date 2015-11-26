@@ -47,21 +47,18 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 	DOUBLE		c = centerToOrigin.dot(centerToOrigin) - _radius * _radius;
 	DOUBLE		delta = b * b - 4.0 * a * c;
 
-	DOUBLE		smallDist;
-	DOUBLE		bigDist;
-
 	if (delta < 0.0)
 		return (Hit::NONE);
 	else
 	{
 		DOUBLE	sqrtDelta = sqrt(delta);
 
-		smallDist = (-b - sqrtDelta) / (2.0 * a);
-		bigDist = (-b + sqrtDelta) / (2.0 * a);
+		DOUBLE	smallDist = (-b - sqrtDelta) / (2.0 * a);
+		DOUBLE	bigDist = (-b + sqrtDelta) / (2.0 * a);
 
 		if (smallDist > EPSILON)
 		{
-			if (smallDist >= distMin)
+			if (smallDist > distMin)
 				return (Hit::NONE);
 
 			h.localPoint = r.origin + r.direction * smallDist;
@@ -73,7 +70,7 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 
 		if (bigDist > EPSILON)
 		{
-			if (bigDist >= distMin)
+			if (bigDist > distMin)
 				return (Hit::NONE);
 
 			h.localPoint = r.origin + r.direction * bigDist;
