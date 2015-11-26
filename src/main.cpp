@@ -1,19 +1,41 @@
 #include <SFML/Graphics.hpp>
+#include "config.hh"
+#include "Render/SfmlRenderTarget.hh"
+#include "Tracer/BasicTracer.hh"
+#include "Scene/BasicScene.hh"
+#include "Camera/PerspectiveCamera.hh"
+#include "Object/Sphere.hh"
 
 int	main()
 {
-  sf::Window App(sf::VideoMode(800, 600), "Raytracer");
+	sf::RenderWindow	app(sf::VideoMode(WIDTH, HEIGHT), "Raytracer");
 
-  while (App.isOpen()) {
-    sf::Event Event;
+	BasicTracer			tracer;
+	BasicScene			scene(&tracer);
+	SfmlRenderTarget	renderTarget(WIDTH, HEIGHT);
+	PerspectiveCamera	perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, 1.0, 0.0));
 
-    while (App.pollEvent(Event)) {
-      if (Event.type == sf::Event::Closed)
-	App.close();
-    }
-    
-    App.display();
-  }
+	Sphere				sphere(10, Vector3D(0.0, 0.0, 50.0));
+	scene.addObject(&sphere);
+
+	perspectiveCamera.computeFrame();
+	perspectiveCamera.renderScene(scene, renderTarget);
+	renderTarget.update();
+
+	while (app.isOpen())
+	{
+ 		sf::Event Event;
+
+		while (app.pollEvent(Event))
+		{
+			if (Event.type == sf::Event::Closed)
+ 				app.close();
+		}
+
+		app.clear();
+		app.draw(renderTarget);
+		app.display();
+	}
   
-  return (0);
+	return (0);
 }

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 project(RAYTRACER)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE SRC_FILES "src/*.cpp")
 
@@ -14,5 +15,5 @@ if(SFML_FOUND)
 	target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 endif()
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -std=c++11")
+set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Werror -std=c++11")
 
