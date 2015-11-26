@@ -13,7 +13,7 @@ Color BasicTracer::traceRay(const Ray &r, unsigned int depth) const
 	{
 		h.ray = &r;
 		h.depth = depth;
-		return (Color::white);
+		return (h.material->shade(r, h));
 	}
 	else
 		return (Color::black);

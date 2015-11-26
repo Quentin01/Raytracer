@@ -19,6 +19,7 @@ Hit::Type BasicScene::intersectRay(const Ray &r, Hit &h) const
 			{
 				returnValue = tempValue;
 				h = tempHit;
+				h.material = _objects[i]->getMaterial();
 			}
 		}
 	}

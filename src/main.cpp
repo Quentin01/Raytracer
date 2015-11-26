@@ -5,6 +5,7 @@
 #include "Scene/BasicScene.hh"
 #include "Camera/PerspectiveCamera.hh"
 #include "Object/Sphere.hh"
+#include "Material/BasicMaterial.hh"
 
 int	main()
 {
@@ -16,6 +17,9 @@ int	main()
 	PerspectiveCamera	perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, 1.0, 0.0));
 
 	Sphere				sphere(10, Vector3D(0.0, 0.0, 50.0));
+	BasicMaterial		material(Color::red);
+
+	sphere.setMaterial(&material);
 	scene.addObject(&sphere);
 
 	perspectiveCamera.computeFrame();
