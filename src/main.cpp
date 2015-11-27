@@ -48,7 +48,7 @@ int main()
     BasicTracer         tracer;
     BasicScene          scene(&tracer);
     SfmlRenderTarget    renderTarget(WIDTH, HEIGHT);
-    PerspectiveCamera   perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, -1.0, 0.0));
+    PerspectiveCamera   perspectiveCamera(Vector3D(0.0, 0.0, 0.0), Vector3D(0.0, 0.0, 100.0), Vector3D(0.0, -1.0, 0.0));
 
     buildAndRenderScene(scene, perspectiveCamera, renderTarget);
 
