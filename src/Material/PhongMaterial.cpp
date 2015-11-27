@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "Scene.hh"
 #include "Material/PhongMaterial.hh"
 
@@ -140,7 +142,17 @@ Color PhongMaterial::shade(const Ray &r, const Hit &h) const
             if (getKd() > 0.0 && dot > 0.0)
                 color += getKd() * getCd() * lights[i]->getLight(h) * shade * dot;
 
-            // TO-DO: Apply specular ligh
+            // Specular ligh
+            Vector3D    rayDirection = r.direction;
+            Vector3D    reflRay = lightDirection - normal * lightDirection.dot(normal) * 2.0;
+
+            rayDirection.normalize();
+            reflRay.normalize();
+
+            dot = reflRay.dot(rayDirection);
+
+            if (getKs() > 0.0 && dot > 0.0)
+                color += getKs() * getCs() * lights[i]->getLight(h) * shade * powf(dot, getNs());
         }
     }
     // TO-DO: Apply reflection
