@@ -3,10 +3,10 @@
 #include "Camera/PerspectiveCamera.hh"
 #include "Tracer.hh"
 
-PerspectiveCamera::PerspectiveCamera() : Camera(), _d(200.0), _fov(DEFAULT_FOV), _zoom(1.0)
+PerspectiveCamera::PerspectiveCamera() : Camera(), _d(DEFAULT_D), _fov(DEFAULT_FOV), _zoom(1.0)
 {}
 
-PerspectiveCamera::PerspectiveCamera(const Vector3D &eye, const Vector3D &lookAt, const Vector3D &up) : Camera(eye, lookAt, up), _d(200.0), _fov(DEFAULT_FOV), _zoom(1.0)
+PerspectiveCamera::PerspectiveCamera(const Vector3D &eye, const Vector3D &lookAt, const Vector3D &up) : Camera(eye, lookAt, up), _d(DEFAULT_D), _fov(DEFAULT_FOV), _zoom(1.0)
 {}
 
 PerspectiveCamera::~PerspectiveCamera()
