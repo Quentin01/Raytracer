@@ -3,7 +3,7 @@
 #include "Camera.hh"
 #include "Utils/Vector2D.hh"
 
-#define DEFAULT_D   100.0
+#define DEFAULT_D   200.0
 #define DEFAULT_FOV 30.0
 
 class PerspectiveCamera : public Camera
