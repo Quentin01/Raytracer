@@ -26,18 +26,23 @@ void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarge
     Sphere              sphere3(10, Vector3D(35.0, 20.0, 100.0));
     PhongMaterial       material3(Color::blue);
 
-    Plane               plane(Vector3D(0, 0, 0), Vector3D(0.0, -1.0, 0.0));
+    Plane               plane1(Vector3D(0, 0, 0), Vector3D(0.0, 1.0, 0.0));
     PhongMaterial       material4(Color(0.0, 1.0, 1.0));
+
+    Plane               plane2(Vector3D(-100, 0, 0), Vector3D(1.0, 0.0, 0.0));
+    PhongMaterial       material5(Color(1.0, 0.0, 1.0));
 
     sphere1.setMaterial(&material1);
     sphere2.setMaterial(&material2);
     sphere3.setMaterial(&material3);
-    plane.setMaterial(&material4);
+    plane1.setMaterial(&material4);
+    plane2.setMaterial(&material5);
     
     scene.addObject(&sphere1);
     scene.addObject(&sphere2);
     scene.addObject(&sphere3);
-    scene.addObject(&plane);
+    scene.addObject(&plane1);
+    scene.addObject(&plane2);
 
     scene.addLight(&light1);
     scene.addLight(&light2);

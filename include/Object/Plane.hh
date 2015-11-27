@@ -16,7 +16,7 @@ public:
     void            setNormal(const Vector3D &normal);
     Vector3D        getNormal() const;
 
-    virtual bool    intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const;
+    virtual bool    intersectRay(const Ray &r, Hit &h, DOUBLE tMin) const;
 
 protected:
     Vector3D        _normal;

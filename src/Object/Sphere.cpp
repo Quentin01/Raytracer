@@ -38,7 +38,7 @@ unsigned int Sphere::getRadius() const
     return (_radius);
 }
 
-bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
+bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE tMin) const
 {
     Vector3D    centerToOrigin = r.origin - _position;
 
@@ -58,7 +58,7 @@ bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 
         if (smallDist > EPSILON)
         {
-            if (smallDist > distMin)
+            if (smallDist > tMin)
                 return (false);
 
             h.t = smallDist;
@@ -72,7 +72,7 @@ bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 
         if (bigDist > EPSILON)
         {
-            if (bigDist > distMin)
+            if (bigDist > tMin)
                 return (Hit::NONE);
 
             h.t = bigDist;

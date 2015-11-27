@@ -12,9 +12,9 @@ bool BasicScene::intersectRay(const Ray &r, Hit &h) const
 
     for (unsigned int i = 0, len = _objects.size(); i < len; i++)
     {
-        if (_objects[i]->intersectRay(r, tempHit, h.dist))
+        if (_objects[i]->intersectRay(r, tempHit, h.t))
         {
-            if (tempHit.dist < h.dist)
+            if (tempHit.t < h.t)
             {
                 haveHit = true;
                 h = tempHit;

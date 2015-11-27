@@ -2,7 +2,9 @@
 #include "Utils/Ray.hh"
 
 Plane::Plane(const Vector3D &position, const Vector3D &normal, const Material *material) : Object(position, material), _normal(normal)
-{}
+{
+    _normal.normalize();
+}
 
 Plane::Plane(const Plane &o) : Object(o)
 {
@@ -37,11 +39,11 @@ Vector3D Plane::getNormal() const
     return (_normal);
 }
 
-bool Plane::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
+bool Plane::intersectRay(const Ray &r, Hit &h, DOUBLE tMin) const
 {
     DOUBLE t = (_position - r.origin).dot(_normal) / r.direction.dot(_normal);
 
-    if (t > EPSILON && t < distMin)
+    if (t > EPSILON && t < tMin)
     {
         h.t = t;
         h.localPoint = r.origin + r.direction * h.t;
