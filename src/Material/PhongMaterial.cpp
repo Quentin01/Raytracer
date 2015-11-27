@@ -117,8 +117,6 @@ Color PhongMaterial::shade(const Ray &r, const Hit &h) const
 {
     Color   color = Color::black;
 
-    (void)(r);
-
     // Ambient light
     if (getKa() > 0.0 && h.scene->getAmbientLight())
         color += getKa() * getCa() * h.scene->getAmbientLight()->getLight(h);
@@ -142,7 +140,7 @@ Color PhongMaterial::shade(const Ray &r, const Hit &h) const
             if (getKd() > 0.0 && dot > 0.0)
                 color += getKd() * getCd() * lights[i]->getLight(h) * shade * dot;
 
-            // Specular ligh
+            // Specular light
             Vector3D    rayDirection = r.direction;
             Vector3D    reflRay = lightDirection - normal * lightDirection.dot(normal) * 2.0;
 
@@ -155,6 +153,7 @@ Color PhongMaterial::shade(const Ray &r, const Hit &h) const
                 color += getKs() * getCs() * lights[i]->getLight(h) * shade * powf(dot, getNs());
         }
     }
+
     // TO-DO: Apply reflection
     // TO-DO: Apply refraction
 
