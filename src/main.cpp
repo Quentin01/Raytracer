@@ -15,12 +15,23 @@ void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarge
     AmbientLight        ambientLight(Color::white);
     PointLight          light1(Vector3D(50.0, 50.0, 0.0));
 
-    Sphere              sphere(10, Vector3D(0.0, 0.0, 50.0));
-    PhongMaterial       material(Color::red);
+    Sphere              sphere1(10, Vector3D(0.0, 0.0, 50.0));
+    PhongMaterial       material1(Color::red);
 
-    sphere.setMaterial(&material);
+    Sphere              sphere2(10, Vector3D(0.0, 25.0, 50.0));
+    PhongMaterial       material2(Color::green);
+
+    Sphere              sphere3(10, Vector3D(35.0, 0.0, 50.0));
+    PhongMaterial       material3(Color::blue);
+
+    sphere1.setMaterial(&material1);
+    sphere2.setMaterial(&material2);
+    sphere3.setMaterial(&material3);
     
-    scene.addObject(&sphere);
+    scene.addObject(&sphere1);
+    scene.addObject(&sphere2);
+    scene.addObject(&sphere3);
+
     scene.addLight(&light1);
     scene.setAmbientLight(&ambientLight);
 

@@ -3,6 +3,8 @@
 #include "Camera.hh"
 #include "Utils/Vector2D.hh"
 
+#define DEFAULT_FOV 45.0
+
 class PerspectiveCamera : public Camera
 {
 public:
@@ -12,6 +14,10 @@ public:
 
     void            setD(FLOAT d);
     FLOAT           getD() const;
+
+    void            setFov(FLOAT fov);
+    FLOAT           getFov() const;
+
     void            setZoom(FLOAT zoom);
     FLOAT           getZoom() const;
 
@@ -20,5 +26,6 @@ public:
 
 protected:
     FLOAT           _d;
+    FLOAT           _fov;
     FLOAT           _zoom;
 };
