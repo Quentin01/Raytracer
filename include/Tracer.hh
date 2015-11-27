@@ -8,21 +8,21 @@ class Scene;
 class Tracer
 {
 public:
-	Tracer();
-	Tracer(Scene *scene);
+    Tracer();
+    Tracer(Scene *scene);
 
-	Tracer(const Tracer &t);
-	Tracer(const Tracer &&t);
+    Tracer(const Tracer &t);
+    Tracer(const Tracer &&t);
 
-	virtual ~Tracer();
+    virtual ~Tracer();
 
-	Tracer			&operator=(const Tracer &t);
+    Tracer          &operator=(const Tracer &t);
 
-	void			setScene(Scene *scene);
-	Scene			*getScene() const;
+    void            setScene(Scene *scene);
+    Scene           *getScene() const;
 
-	virtual Color	traceRay(const Ray &r, unsigned int depth = 0) const = 0;
+    virtual Color   traceRay(const Ray &r, unsigned int depth = 0) const = 0;
 
 protected:
-	Scene		*_scene;
+    Scene       *_scene;
 };

@@ -11,10 +11,10 @@ void RenderTarget::update()
 
 unsigned int RenderTarget::getWidth() const
 {
-	return (_width);
+    return (_width);
 }
 
 unsigned int RenderTarget::getHeight() const
 {
-	return (_height);
+    return (_height);
 }

@@ -7,9 +7,9 @@
 class Material
 {
 public:
-	Material();
+    Material();
 
-	virtual ~Material();
+    virtual ~Material();
 
-	virtual Color	shade(const Ray &r, const Hit &h) const = 0;
+    virtual Color   shade(const Ray &r, const Hit &h) const = 0;
 };

@@ -10,47 +10,47 @@
 
 void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarget)
 {
-	// Build scene
-	AmbientLight		ambientLight(Color::white);
-	Sphere				sphere(10, Vector3D(0.0, 0.0, 50.0));
-	BasicMaterial		material(Color::red);
+    // Build scene
+    AmbientLight        ambientLight(Color::white);
+    Sphere              sphere(10, Vector3D(0.0, 0.0, 50.0));
+    BasicMaterial       material(Color::red);
 
-	sphere.setMaterial(&material);
-	
-	scene.addObject(&sphere);
-	scene.setAmbientLight(&ambientLight);
+    sphere.setMaterial(&material);
+    
+    scene.addObject(&sphere);
+    scene.setAmbientLight(&ambientLight);
 
-	// Render scene
-	camera.computeFrame();
-	camera.renderScene(scene, renderTarget);
-	renderTarget.update();
+    // Render scene
+    camera.computeFrame();
+    camera.renderScene(scene, renderTarget);
+    renderTarget.update();
 }
 
-int	main()
+int main()
 {
-	sf::RenderWindow	app(sf::VideoMode(WIDTH, HEIGHT), "Raytracer");
+    sf::RenderWindow    app(sf::VideoMode(WIDTH, HEIGHT), "Raytracer");
 
-	BasicTracer			tracer;
-	BasicScene			scene(&tracer);
-	SfmlRenderTarget	renderTarget(WIDTH, HEIGHT);
-	PerspectiveCamera	perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, 1.0, 0.0));
+    BasicTracer         tracer;
+    BasicScene          scene(&tracer);
+    SfmlRenderTarget    renderTarget(WIDTH, HEIGHT);
+    PerspectiveCamera   perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, 1.0, 0.0));
 
-	buildAndRenderScene(scene, perspectiveCamera, renderTarget);
+    buildAndRenderScene(scene, perspectiveCamera, renderTarget);
 
-	while (app.isOpen())
-	{
- 		sf::Event Event;
+    while (app.isOpen())
+    {
+        sf::Event Event;
 
-		while (app.pollEvent(Event))
-		{
-			if (Event.type == sf::Event::Closed)
- 				app.close();
-		}
+        while (app.pollEvent(Event))
+        {
+            if (Event.type == sf::Event::Closed)
+                app.close();
+        }
 
-		app.clear();
-		app.draw(renderTarget);
-		app.display();
-	}
+        app.clear();
+        app.draw(renderTarget);
+        app.display();
+    }
   
-	return (0);
+    return (0);
 }

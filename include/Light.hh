@@ -11,6 +11,6 @@ public:
 
     virtual ~Light();
 
-    virtual Vector3D	getDirection(const Hit &h) const = 0;
-	virtual Color		getLight(const Hit &h) const = 0;
+    virtual Vector3D    getDirection(const Hit &h) const = 0;
+    virtual Color       getLight(const Hit &h) const = 0;
 };

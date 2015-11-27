@@ -1,10 +1,10 @@
 #include "Utils/Color.hh"
 
-const Color	Color::black(0.0);
-const Color	Color::white(1.0);
-const Color	Color::red(1.0, 0.0, 0.0);
-const Color	Color::green(0.0, 1.0, 0.0);
-const Color	Color::blue(0.0, 0.0, 1.0);
+const Color Color::black(0.0);
+const Color Color::white(1.0);
+const Color Color::red(1.0, 0.0, 0.0);
+const Color Color::green(0.0, 1.0, 0.0);
+const Color Color::blue(0.0, 0.0, 1.0);
 
 Color::Color() : r(0.0), g(0.0), b(0.0) 
 {}
@@ -17,16 +17,16 @@ Color::Color(FLOAT r, FLOAT g, FLOAT b) : r(r), g(g), b(b)
 
 Color::Color(const Color &c)
 {
-	r = c.r;
-	g = c.g;
-	b = c.b;
+    r = c.r;
+    g = c.g;
+    b = c.b;
 }
 
 Color::Color(const Color &&c)
 {
-	r = c.r;
-	g = c.g;
-	b = c.b;
+    r = c.r;
+    g = c.g;
+    b = c.b;
 }
 
 Color::~Color()
@@ -34,79 +34,79 @@ Color::~Color()
 
 Color &Color::operator=(const Color &c)
 {
-	r = c.r;
-	g = c.g;
-	b = c.b;
-	
-	return (*this);
+    r = c.r;
+    g = c.g;
+    b = c.b;
+    
+    return (*this);
 }
 
 Color Color::operator+(const Color &c) const
 {
-	return Color(r + c.r, g + c.g, b + c.b);
+    return Color(r + c.r, g + c.g, b + c.b);
 }
 
 Color &Color::operator+=(const Color &c)
 {
-	r += c.r;
-	g += c.g;
-	b += c.b;
+    r += c.r;
+    g += c.g;
+    b += c.b;
 
-	return (*this);
+    return (*this);
 }
 
 Color Color::operator-(const Color &c) const
 {
-	return Color(r - c.r, g - c.g, b - c.b);
+    return Color(r - c.r, g - c.g, b - c.b);
 }
 
 Color &Color::operator-=(const Color &c)
 {
-	r -= c.r;
-	g -= c.g;
-	b -= c.b;
+    r -= c.r;
+    g -= c.g;
+    b -= c.b;
 
-	return (*this);
+    return (*this);
 }
 
 Color Color::operator*(const FLOAT &rhs) const
 {
-	return Color(r * rhs, g * rhs, b * rhs);
+    return Color(r * rhs, g * rhs, b * rhs);
 }
 
 Color &Color::operator*=(const FLOAT &rhs)
 {
-	r *= rhs;
-	g *= rhs;
-	b *= rhs;
+    r *= rhs;
+    g *= rhs;
+    b *= rhs;
 
-	return (*this);
+    return (*this);
 }
 
 Color Color::operator*(const Color &c) const
 {
-	return (Color(r * c.r, g * c.g, b * c.b));
+    return (Color(r * c.r, g * c.g, b * c.b));
 }
 
-Color	&Color::operator*=(const Color &c)
+Color   &Color::operator*=(const Color &c)
 {
-	r *= c.r;
-	g *= c.g;
-	b *= c.b;
+    r *= c.r;
+    g *= c.g;
+    b *= c.b;
 
-	return (*this);
+    return (*this);
 }
 
 Color Color::operator/(const FLOAT &rhs) const
 {
-	return Color(r / rhs, g / rhs, b / rhs);
+    return Color(r / rhs, g / rhs, b / rhs);
 }
 
 Color &Color::operator/=(const FLOAT &rhs)
 {
-	r /= rhs;
-	g /= rhs;
-	b /= rhs;
+    r /= rhs;
+    g /= rhs;
+    b /= rhs;
 
-	return (*this);
+    return (*this);
 }

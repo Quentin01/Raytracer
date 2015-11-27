@@ -5,11 +5,11 @@
 class BasicScene : public Scene
 {
 public:
-	using Scene::Scene;
-	
-	virtual void				addObject(const Object *object);
-	virtual Hit::Type			intersectRay(const Ray &r, Hit &h) const;
+    using Scene::Scene;
+    
+    virtual void                addObject(const Object *object);
+    virtual Hit::Type           intersectRay(const Ray &r, Hit &h) const;
 
 protected:
-	std::vector<const Object*>	_objects;
+    std::vector<const Object*>  _objects;
 };

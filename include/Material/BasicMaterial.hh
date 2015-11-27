@@ -5,12 +5,12 @@
 class BasicMaterial : public Material
 {
 public:
-	BasicMaterial(const Color &color);
+    BasicMaterial(const Color &color);
 
-	virtual ~BasicMaterial();
+    virtual ~BasicMaterial();
 
-	virtual Color	shade(const Ray &r, const Hit &h) const;
+    virtual Color   shade(const Ray &r, const Hit &h) const;
 
 protected:
-	Color			_color;
+    Color           _color;
 };

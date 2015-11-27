@@ -5,15 +5,15 @@
 class Ray
 {
 public:
-	Ray();
-	Ray(Vector3D origin, Vector3D direction);
-	Ray(const Ray &r);
-	Ray(const Ray &&r);
+    Ray();
+    Ray(Vector3D origin, Vector3D direction);
+    Ray(const Ray &r);
+    Ray(const Ray &&r);
 
-	virtual ~Ray();
+    virtual ~Ray();
 
-	Ray			&operator=(const Ray &r);
+    Ray         &operator=(const Ray &r);
 
-	Vector3D	origin;
-	Vector3D	direction;
+    Vector3D    origin;
+    Vector3D    direction;
 };

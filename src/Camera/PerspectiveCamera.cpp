@@ -12,59 +12,59 @@ PerspectiveCamera::~PerspectiveCamera()
 
 void PerspectiveCamera::setD(FLOAT d)
 {
-	_d = d;
+    _d = d;
 }
 
 FLOAT PerspectiveCamera::getD() const
 {
-	return (_d);
+    return (_d);
 }
 
 void PerspectiveCamera::setZoom(FLOAT zoom)
 {
-	_zoom = zoom;
+    _zoom = zoom;
 }
 
 FLOAT PerspectiveCamera::getZoom() const
 {
-	return (_zoom);
+    return (_zoom);
 }
 
-Ray	PerspectiveCamera::generateRay(const Vector2D &p) const
+Ray PerspectiveCamera::generateRay(const Vector2D &p) const
 {
-	Ray r;
+    Ray r;
 
-	r.origin = _eye;
-	r.direction = _u * p.x + _v * p.y - _w * _d;
+    r.origin = _eye;
+    r.direction = _u * p.x + _v * p.y - _w * _d;
 
-	return (r);
+    return (r);
 }
 
 void PerspectiveCamera::renderScene(const Scene &scene, RenderTarget &target)
 {
-	Ray	ray;
-	Color color;
-	unsigned int width = target.getWidth(), height = target.getHeight();
-	FLOAT zoomFactor = _pixelSize / _zoom;
+    Ray ray;
+    Color color;
+    unsigned int width = target.getWidth(), height = target.getHeight();
+    FLOAT zoomFactor = _pixelSize / _zoom;
 
-	for (unsigned int y = 0; y < height; y++)
-	{
-		for (unsigned int x = 0; x < width; x++)
-		{
-			color = Color::black;
+    for (unsigned int y = 0; y < height; y++)
+    {
+        for (unsigned int x = 0; x < width; x++)
+        {
+            color = Color::black;
 
-			for (unsigned int s = 0; s < _nbSamples; s++)
-			{
-				// TO-DO: Apply sample
-				ray = generateRay(Vector2D(
-					zoomFactor * (x - 0.5 * width),
-					zoomFactor * (y - 0.5 * height)
-				));
+            for (unsigned int s = 0; s < _nbSamples; s++)
+            {
+                // TO-DO: Apply sample
+                ray = generateRay(Vector2D(
+                    zoomFactor * (x - 0.5 * width),
+                    zoomFactor * (y - 0.5 * height)
+                ));
 
-				color += scene.getTracer()->traceRay(ray);
-			}
+                color += scene.getTracer()->traceRay(ray);
+            }
 
-			target.displayPixel(x, y, color * _exposure / _nbSamples);
-		}
-	}
+            target.displayPixel(x, y, color * _exposure / _nbSamples);
+        }
+    }
 }
