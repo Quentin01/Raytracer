@@ -6,6 +6,25 @@
 #include "Camera/PerspectiveCamera.hh"
 #include "Object/Sphere.hh"
 #include "Material/BasicMaterial.hh"
+#include "Light/AmbientLight.hh"
+
+void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarget)
+{
+	// Build scene
+	AmbientLight		ambientLight(Color::white);
+	Sphere				sphere(10, Vector3D(0.0, 0.0, 50.0));
+	BasicMaterial		material(Color::red);
+
+	sphere.setMaterial(&material);
+	
+	scene.addObject(&sphere);
+	scene.setAmbientLight(&ambientLight);
+
+	// Render scene
+	camera.computeFrame();
+	camera.renderScene(scene, renderTarget);
+	renderTarget.update();
+}
 
 int	main()
 {
@@ -16,15 +35,7 @@ int	main()
 	SfmlRenderTarget	renderTarget(WIDTH, HEIGHT);
 	PerspectiveCamera	perspectiveCamera(Vector3D(0.0), Vector3D(0.0, 0.0, 50.0), Vector3D(0.0, 1.0, 0.0));
 
-	Sphere				sphere(10, Vector3D(0.0, 0.0, 50.0));
-	BasicMaterial		material(Color::red);
-
-	sphere.setMaterial(&material);
-	scene.addObject(&sphere);
-
-	perspectiveCamera.computeFrame();
-	perspectiveCamera.renderScene(scene, renderTarget);
-	renderTarget.update();
+	buildAndRenderScene(scene, perspectiveCamera, renderTarget);
 
 	while (app.isOpen())
 	{

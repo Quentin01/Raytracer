@@ -1,3 +1,4 @@
+#include "Scene.hh"
 #include "Material/BasicMaterial.hh"
 
 BasicMaterial::BasicMaterial(const Color &color) : _color(color)

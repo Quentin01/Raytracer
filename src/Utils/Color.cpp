@@ -41,30 +41,30 @@ Color &Color::operator=(const Color &c)
 	return (*this);
 }
 
-Color Color::operator+(const Color &v) const
+Color Color::operator+(const Color &c) const
 {
-	return Color(r + v.r, g + v.g, b + v.b);
+	return Color(r + c.r, g + c.g, b + c.b);
 }
 
-Color &Color::operator+=(const Color &v)
+Color &Color::operator+=(const Color &c)
 {
-	r += v.r;
-	g += v.g;
-	b += v.b;
+	r += c.r;
+	g += c.g;
+	b += c.b;
 
 	return (*this);
 }
 
-Color Color::operator-(const Color &v) const
+Color Color::operator-(const Color &c) const
 {
-	return Color(r - v.r, g - v.g, b - v.b);
+	return Color(r - c.r, g - c.g, b - c.b);
 }
 
-Color &Color::operator-=(const Color &v)
+Color &Color::operator-=(const Color &c)
 {
-	r -= v.r;
-	g -= v.g;
-	b -= v.b;
+	r -= c.r;
+	g -= c.g;
+	b -= c.b;
 
 	return (*this);
 }
@@ -79,6 +79,20 @@ Color &Color::operator*=(const FLOAT &rhs)
 	r *= rhs;
 	g *= rhs;
 	b *= rhs;
+
+	return (*this);
+}
+
+Color Color::operator*(const Color &c) const
+{
+	return (Color(r * c.r, g * c.g, b * c.b));
+}
+
+Color	&Color::operator*=(const Color &c)
+{
+	r *= c.r;
+	g *= c.g;
+	b *= c.b;
 
 	return (*this);
 }

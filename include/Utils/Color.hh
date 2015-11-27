@@ -14,14 +14,17 @@ public:
 
 	Color	&operator=(const Color &c);
 
-	Color	operator+(const Color &v) const;
-	Color	&operator+=(const Color &v);
+	Color	operator+(const Color &c) const;
+	Color	&operator+=(const Color &c);
 
-	Color	operator-(const Color &v) const;
-	Color	&operator-=(const Color &v);
+	Color	operator-(const Color &c) const;
+	Color	&operator-=(const Color &c);
 
 	Color	operator*(const FLOAT &rhs) const;
 	Color	&operator*=(const FLOAT &rhs);
+
+	Color	operator*(const Color &c) const;
+	Color	&operator*=(const Color &c);
 
 	Color	operator/(const FLOAT &rhs) const;
 	Color	&operator/=(const FLOAT &rhs);

@@ -2,6 +2,7 @@
 
 #include "Utils/Vector3D.hh"
 
+class Scene;
 class Material;
 class Ray;
 
@@ -23,6 +24,7 @@ public:
 
 	Hit				&operator=(const Hit &h);
 
+	const Scene		*scene;
 	const Material	*material;
 
 	Vector3D		point;
