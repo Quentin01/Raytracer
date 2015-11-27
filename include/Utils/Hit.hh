@@ -24,6 +24,8 @@ public:
 
     Hit             &operator=(const Hit &h);
 
+    Hit::Type       type;
+
     const Scene     *scene;
     const Material  *material;
 

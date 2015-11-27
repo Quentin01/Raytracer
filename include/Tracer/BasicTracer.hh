@@ -5,5 +5,5 @@
 class BasicTracer : public Tracer
 {
 public:
-    virtual Color   traceRay(const Ray &r, unsigned int depth = 0) const;
+    virtual Color   traceRay(const Ray &r, Hit &h, unsigned int depth = 0) const;
 };

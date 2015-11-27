@@ -36,3 +36,10 @@ Scene *Tracer::getScene() const
 {
     return (_scene);
 }
+
+Color Tracer::traceRay(const Ray &r, unsigned int depth) const
+{
+    Hit h;
+    
+    return (traceRay(r, h, depth));
+}

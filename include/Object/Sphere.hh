@@ -16,7 +16,7 @@ public:
     void            setRadius(unsigned int radius);
     unsigned int    getRadius() const;
 
-    virtual Hit::Type   intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const;
+    virtual bool    intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const;
 
 protected:
     unsigned int    _radius;

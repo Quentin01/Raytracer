@@ -20,7 +20,7 @@ public:
     void                setPosition(const Vector3D &position);
     Vector3D            getPosition() const;
 
-    virtual Hit::Type   intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const = 0;
+    virtual bool        intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const = 0;
 
 protected:
     Vector3D            _position;

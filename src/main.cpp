@@ -5,7 +5,7 @@
 #include "Scene/BasicScene.hh"
 #include "Camera/PerspectiveCamera.hh"
 #include "Object/Sphere.hh"
-#include "Material/BasicMaterial.hh"
+#include "Material/PhongMaterial.hh"
 #include "Light/AmbientLight.hh"
 
 void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarget)
@@ -13,7 +13,7 @@ void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarge
     // Build scene
     AmbientLight        ambientLight(Color::white);
     Sphere              sphere(10, Vector3D(0.0, 0.0, 50.0));
-    BasicMaterial       material(Color::red);
+    PhongMaterial       material(Color::red);
 
     sphere.setMaterial(&material);
     

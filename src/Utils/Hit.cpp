@@ -5,6 +5,7 @@ Hit::Hit()
 
 Hit::Hit(const Hit &h)
 {
+    type = h.type;
     scene = h.scene;
     point = h.point;
     localPoint = h.localPoint;
@@ -17,6 +18,7 @@ Hit::Hit(const Hit &h)
 
 Hit::Hit(const Hit &&h)
 {
+    type = h.type;
     scene = h.scene;
     point = h.point;
     localPoint = h.localPoint;
@@ -32,6 +34,7 @@ Hit::~Hit()
 
 Hit &Hit::operator=(const Hit &h)
 {
+    type = h.type;
     scene = h.scene;
     point = h.point;
     localPoint = h.localPoint;

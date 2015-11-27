@@ -39,3 +39,6 @@ public:
     static const Color  green;
     static const Color  blue;
 };
+
+Color operator*(FLOAT lhs, Color rhs);
+Color operator/(FLOAT lhs, Color rhs);

@@ -4,12 +4,10 @@
 #include "Scene.hh"
 #include "Utils/Hit.hh"
 
-Color BasicTracer::traceRay(const Ray &r, unsigned int depth) const
+Color BasicTracer::traceRay(const Ray &r, Hit &h, unsigned int depth) const
 {
-    Hit h;
-
     h.dist = std::numeric_limits<DOUBLE>::infinity();
-    if (_scene && _scene->intersectRay(r, h) != Hit::NONE)
+    if (_scene && _scene->intersectRay(r, h))
     {
         h.scene = _scene;
         h.ray = &r;
@@ -18,5 +16,8 @@ Color BasicTracer::traceRay(const Ray &r, unsigned int depth) const
         return (h.material->shade(r, h));
     }
     else
+    {
+        h.type = Hit::NONE;
         return (Color::black);
+    }
 }

@@ -16,4 +16,5 @@ public:
 
     Vector3D    origin;
     Vector3D    direction;
+    FLOAT       refractiveIndex;
 };

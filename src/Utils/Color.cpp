@@ -110,3 +110,13 @@ Color &Color::operator/=(const FLOAT &rhs)
 
     return (*this);
 }
+
+Color operator*(FLOAT lhs, Color rhs)
+{
+    return (Color(rhs.r * lhs, rhs.g * lhs, rhs.b * lhs));
+}
+
+Color operator/(FLOAT lhs, Color rhs)
+{
+    return (Color(rhs.r / lhs, rhs.g / lhs, rhs.b / lhs));
+}

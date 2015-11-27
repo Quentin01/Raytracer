@@ -33,7 +33,7 @@ public:
 
     virtual void                            addObject(const Object *object) = 0;
 
-    virtual Hit::Type                       intersectRay(const Ray &r, Hit &h) const = 0;
+    virtual bool                            intersectRay(const Ray &r, Hit &h) const = 0;
 
 protected:
     Tracer                                  *_tracer;

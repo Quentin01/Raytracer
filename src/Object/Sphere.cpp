@@ -38,7 +38,7 @@ unsigned int Sphere::getRadius() const
     return (_radius);
 }
 
-Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
+bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 {
     Vector3D    centerToOrigin = r.origin - _position;
 
@@ -48,7 +48,7 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
     DOUBLE      delta = b * b - 4.0 * a * c;
 
     if (delta < 0.0)
-        return (Hit::NONE);
+        return (false);
     else
     {
         DOUBLE  sqrtDelta = sqrt(delta);
@@ -59,14 +59,15 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
         if (smallDist > EPSILON)
         {
             if (smallDist > distMin)
-                return (Hit::NONE);
+                return (false);
 
             h.t = smallDist;
             h.localPoint = r.origin + r.direction * h.t;
             h.normal = centerToOrigin;
             h.normal.normalize();
+            h.type = Hit::OUTSIDE;
 
-            return (Hit::OUTSIDE);
+            return (true);
         }
 
         if (bigDist > EPSILON)
@@ -80,11 +81,13 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
             h.normal.normalize();
             
             if (smallDist < 0.0)
-                return (Hit::INSIDE);
+                 h.type = Hit::INSIDE;
             else
-                return (Hit::OUTSIDE);
+                 h.type = Hit::OUTSIDE;
+        
+            return (true);
         }
     }
 
-    return (Hit::NONE);
+    return (false);
 }
