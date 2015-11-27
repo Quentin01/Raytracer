@@ -118,11 +118,31 @@ Color PhongMaterial::shade(const Ray &r, const Hit &h) const
     (void)(r);
 
     // Ambient light
-    if (h.scene->getAmbientLight())
+    if (getKa() > 0.0 && h.scene->getAmbientLight())
         color += getKa() * getCa() * h.scene->getAmbientLight()->getLight(h);
 
-    // TO-DO: Apply diffuse light
-    // TO-DO: Apply specular light
+    auto &lights = h.scene->getLights();
+    for (unsigned int i = 0, len = lights.size(); i < len; i++)
+    {
+        FLOAT   shade = lights[i]->getShade(h);
+
+        if (shade > 0.0)
+        {
+            Vector3D    lightDirection = lights[i]->getDirection(h);
+            Vector3D    normal = h.normal;
+
+            lightDirection.normalize();
+            normal.normalize();
+
+            DOUBLE      dot = normal.dot(lightDirection);
+
+            // Diffuse light
+            if (getKd() > 0.0 && dot > 0.0)
+                color += getKd() * getCd() * lights[i]->getLight(h) * shade * dot;
+
+            // TO-DO: Apply specular ligh
+        }
+    }
     // TO-DO: Apply reflection
     // TO-DO: Apply refraction
 

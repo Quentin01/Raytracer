@@ -33,6 +33,12 @@ Color AmbientLight::getColor() const
     return (_color);
 }
 
+FLOAT AmbientLight::getShade(const Hit &h) const
+{
+    (void)(h);
+    return (1.0);
+}
+
 Vector3D AmbientLight::getDirection(const Hit &h) const
 {
     (void)(h);

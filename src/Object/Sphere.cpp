@@ -63,7 +63,7 @@ bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 
             h.t = smallDist;
             h.localPoint = r.origin + r.direction * h.t;
-            h.normal = centerToOrigin;
+            h.normal = (centerToOrigin + r.direction * h.t) / _radius;
             h.normal.normalize();
             h.type = Hit::OUTSIDE;
 
@@ -77,7 +77,7 @@ bool Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 
             h.t = bigDist;
             h.localPoint = r.origin + r.direction * h.t;
-            h.normal = centerToOrigin;
+            h.normal = (centerToOrigin + r.direction * h.t) / _radius;
             h.normal.normalize();
             
             if (smallDist < 0.0)

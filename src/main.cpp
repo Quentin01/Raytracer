@@ -7,17 +7,21 @@
 #include "Object/Sphere.hh"
 #include "Material/PhongMaterial.hh"
 #include "Light/AmbientLight.hh"
+#include "Light/PointLight.hh"
 
 void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarget)
 {
     // Build scene
     AmbientLight        ambientLight(Color::white);
+    PointLight          light1(Vector3D(50.0, 20.0, 20.0));
+
     Sphere              sphere(10, Vector3D(0.0, 0.0, 50.0));
     PhongMaterial       material(Color::red);
 
     sphere.setMaterial(&material);
     
     scene.addObject(&sphere);
+    scene.addLight(&light1);
     scene.setAmbientLight(&ambientLight);
 
     // Render scene
