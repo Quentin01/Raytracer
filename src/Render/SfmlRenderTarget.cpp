@@ -26,9 +26,9 @@ void SfmlRenderTarget::displayPixel(unsigned int x, unsigned int y, const Color 
     if (maxColor > 1.0)
         renderColor = color / maxColor;
 
-    _pixels[4 * (x + y * _width) + 0] = color.r * 255;
-    _pixels[4 * (x + y * _width) + 1] = color.g * 255;
-    _pixels[4 * (x + y * _width) + 2] = color.b * 255;
+    _pixels[4 * (x + y * _width) + 0] = renderColor.r * 255;
+    _pixels[4 * (x + y * _width) + 1] = renderColor.g * 255;
+    _pixels[4 * (x + y * _width) + 2] = renderColor.b * 255;
     _pixels[4 * (x + y * _width) + 3] = 255;
 }
 
