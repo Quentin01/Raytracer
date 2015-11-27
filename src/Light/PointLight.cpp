@@ -1,3 +1,4 @@
+#include "Scene.hh"
 #include "Light/PointLight.hh"
 
 PointLight::PointLight(const Vector3D &position, const Color &color, FLOAT intensity) : _intensity(intensity), _color(color), _position(position)
@@ -52,8 +53,7 @@ Vector3D PointLight::getPosition() const
 
 FLOAT PointLight::getShade(const Hit &h) const
 {
-    (void)(h);
-    return (1.0);
+    return (h.scene->shade(h, _position));
 }
 
 Vector3D PointLight::getDirection(const Hit &h) const

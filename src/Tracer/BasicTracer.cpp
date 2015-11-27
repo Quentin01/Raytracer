@@ -1,13 +1,9 @@
-#include <limits>
-
 #include "Tracer/BasicTracer.hh"
 #include "Scene.hh"
 #include "Utils/Hit.hh"
 
 Color BasicTracer::traceRay(const Ray &r, Hit &h, unsigned int depth) const
 {
-    h.t = std::numeric_limits<DOUBLE>::infinity();
-    h.dist = std::numeric_limits<DOUBLE>::infinity();
     if (_scene && _scene->intersectRay(r, h))
     {
         h.scene = _scene;

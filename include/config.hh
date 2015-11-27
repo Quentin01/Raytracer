@@ -8,4 +8,4 @@
 #define FLOAT   float
 #define DOUBLE  double
 
-#define EPSILON 0.0001f
+#define EPSILON 0.0001

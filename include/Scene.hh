@@ -33,6 +33,7 @@ public:
 
     virtual void                            addObject(const Object *object) = 0;
 
+    virtual FLOAT                           shade(const Hit &h, const Vector3D &lightPosition) const;
     virtual bool                            intersectRay(const Ray &r, Hit &h) const = 0;
 
 protected:

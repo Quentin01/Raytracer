@@ -1,7 +1,12 @@
+#include <limits>
+
 #include "Utils/Hit.hh"
 
 Hit::Hit()
-{}
+{
+    t = std::numeric_limits<DOUBLE>::infinity();
+    dist = std::numeric_limits<DOUBLE>::infinity();
+}
 
 Hit::Hit(const Hit &h)
 {

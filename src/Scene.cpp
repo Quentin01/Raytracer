@@ -42,3 +42,17 @@ const std::vector<const Light*> &Scene::getLights() const
 {
     return (_lights);
 }
+
+FLOAT Scene::shade(const Hit &h, const Vector3D &lightPosition) const
+{
+    Hit newHit;
+    Ray r;
+
+    r.origin = lightPosition;
+    r.direction = h.point - lightPosition;
+
+    if (intersectRay(r, newHit) && newHit.t < 1.0 - EPSILON)
+        return (0.0);
+    else
+        return (1.0);
+}
