@@ -12,6 +12,7 @@ Color BasicTracer::traceRay(const Ray &r, Hit &h, unsigned int depth) const
         h.scene = _scene;
         h.ray = &r;
         h.depth = depth;
+        h.point = r.origin + r.direction * h.t;
         h.dist = (r.origin - h.point).getNorme();
         return (h.material->shade(r, h));
     }
