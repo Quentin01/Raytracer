@@ -11,6 +11,7 @@ Hit::Hit(const Hit &h)
 	ray = h.ray;
 	depth = h.depth;
 	dist = h.dist;
+	t = h.t;
 }
 
 Hit::Hit(const Hit &&h)
@@ -21,6 +22,7 @@ Hit::Hit(const Hit &&h)
 	ray = h.ray;
 	depth = h.depth;
 	dist = h.dist;
+	t = h.t;
 }
 
 Hit::~Hit()
@@ -34,6 +36,7 @@ Hit	&Hit::operator=(const Hit &h)
 	ray = h.ray;
 	depth = h.depth;
 	dist = h.dist;
+	t = h.t;
 
 	return (*this);
 }

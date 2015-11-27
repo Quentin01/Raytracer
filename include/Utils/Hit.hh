@@ -33,4 +33,5 @@ public:
 	const Ray		*ray;
 	unsigned int	depth;
 	DOUBLE			dist;
+	DOUBLE			t;
 };

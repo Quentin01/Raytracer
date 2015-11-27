@@ -61,8 +61,8 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 			if (smallDist > distMin)
 				return (Hit::NONE);
 
-			h.dist = smallDist;
-			h.localPoint = r.origin + r.direction * h.dist;
+			h.t = smallDist;
+			h.localPoint = r.origin + r.direction * h.t;
 			h.normal = centerToOrigin;
 			h.normal.normalize();
 
@@ -74,8 +74,8 @@ Hit::Type Sphere::intersectRay(const Ray &r, Hit &h, DOUBLE distMin) const
 			if (bigDist > distMin)
 				return (Hit::NONE);
 
-			h.dist = bigDist;
-			h.localPoint = r.origin + r.direction * h.dist;
+			h.t = bigDist;
+			h.localPoint = r.origin + r.direction * h.t;
 			h.normal = centerToOrigin;
 			h.normal.normalize();
 			
