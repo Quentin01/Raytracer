@@ -4,10 +4,11 @@ project(RAYTRACER)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
-file(GLOB_RECURSE SRC_FILES "src/*.cpp")
+file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.inl")
+file(GLOB_RECURSE HEADERS_FILES "include/*.hh" "include/*.hpp")
 
 set(EXECUTABLE_NAME "rt")
-add_executable(${EXECUTABLE_NAME} ${SRC_FILES})
+add_executable(${EXECUTABLE_NAME} ${SRC_FILES} ${HEADERS_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 2 REQUIRED system window graphics)
