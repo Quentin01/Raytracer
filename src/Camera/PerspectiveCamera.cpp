@@ -60,7 +60,6 @@ void PerspectiveCamera::renderScene(const Scene &scene, RenderTarget &target)
 
     unsigned int width = target.getWidth(), height = target.getHeight();
 
-    FLOAT aspect = width / height;
     FLOAT zoomFactor = _pixelSize / _zoom;
     FLOAT angle = tan((M_PI * 0.5 * _fov) / 180.0);
 
@@ -75,7 +74,7 @@ void PerspectiveCamera::renderScene(const Scene &scene, RenderTarget &target)
                 // TO-DO: Apply sample
                 ray = generateRay(Vector2D(
                     zoomFactor * (x - 0.5 * width) * angle,
-                    zoomFactor * (y - 0.5 * height) * angle * aspect
+                    zoomFactor * (y - 0.5 * height) * angle
                 ));
 
                 color += scene.getTracer()->traceRay(ray);
