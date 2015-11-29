@@ -6,6 +6,8 @@
 #include "Camera/PerspectiveCamera.hh"
 #include "Object/Sphere.hh"
 #include "Object/Plane.hh"
+#include "Object/Torus.hh"
+#include "Material/BasicMaterial.hh"
 #include "Material/PhongMaterial.hh"
 #include "Light/AmbientLight.hh"
 #include "Light/PointLight.hh"
@@ -17,7 +19,7 @@ void buildAndRenderScene(Scene &scene, Camera &camera, RenderTarget &renderTarge
     PointLight          light1(Vector3D(50.0, 70.0, 0.0));
     PointLight          light2(Vector3D(50.0, 70.0, 200.0));
 
-    Sphere              sphere1(10, Vector3D(0.0, 20.0, 100.0));
+    Torus               sphere1(10, 4, Vector3D(0.0, 20.0, 100.0));
     PhongMaterial       material1(Color::red);
 
     Sphere              sphere2(10, Vector3D(0.0, 45.0, 100.0));
@@ -66,7 +68,7 @@ int main()
     BasicTracer         tracer;
     BasicScene          scene(&tracer);
     SfmlRenderTarget    renderTarget(WIDTH, HEIGHT);
-    PerspectiveCamera   perspectiveCamera(Vector3D(0.0, 20.0, 0.0), Vector3D(0.0, 20.0, 100.0), Vector3D(0.0, -1.0, 0.0));
+    PerspectiveCamera   perspectiveCamera(Vector3D(0.0, 50.0, 0.0), Vector3D(0.0, 20.0, 100.0), Vector3D(0.0, -1.0, 0.0));
 
     buildAndRenderScene(scene, perspectiveCamera, renderTarget);
 
